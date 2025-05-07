@@ -1,0 +1,393 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper, margin=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{titling}
+\usepackage{graphicx}
+\onehalfspacing
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+sudo tlmgr install infwarerr
+sudo tlmgr install hyperref
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\thispagestyle{empty}
+\begin{document}
+\begin{center}
+
+Mindanao State University-Main Campus\\
+Marawi City, Lanao del Sur
+
+\vspace{3cm}
+
+College of Natural Science and Mathematics\\
+\textbf{Department of Physics}
+
+\vspace{3cm}
+
+\textbf{Lasso Regression Analysis for Predicting Elemental Melting Points using Machine Learning Techniques}\\
+
+\vspace{3cm}
+
+Final Project for the Course:\\
+PHY161 and PHY 161.1\\
+1\textsuperscript{st} Semester A.Y. 2024-2025
+
+\vspace{2cm}
+
+\textbf{Dave Angelo C. Iligan}\\
+Researcher
+
+\vspace{2cm}
+
+\textbf{Dr. Edward Aris D. Fajardo}\\
+Professor\\
+
+
+December 2024\\
+
+\end{center}
+
+\newpage
+
+\begin{center}
+\textbf{TABLE OF CONTENTS}
+\end{center}
+
+\vspace{1cm}
+
+\begin{flushleft}
+\begin{tabbing}
+\hspace{5cm} \= \hspace{10cm} \= \kill
+\textbf{Title Page} \> \dotfill \> i \\
+\textbf{Table of Contents} \> \dotfill \> ii \\
+\textbf{Abstract} \> \dotfill \> iii \\[0.5cm]
+
+\textbf{Introduction} \> \dotfill \> 1 \\
+\hspace{1cm} Statement of the Problem \> \dotfill \> 2 \\
+\hspace{1cm} Significance of the Study \> \dotfill \> 2 \\
+\hspace{1cm} Review of Related Literature \> \dotfill \> 3 \\
+\textbf{Methodology} \> \dotfill \> 5 \\
+\textbf{Results and Discussion} \> \dotfill \> 7 \\
+\textbf{Conclusion} \> \dotfill \> 17 \\
+\textbf{Recommendations} \> \dotfill \> 17 \\
+\textbf{References} \> \dotfill \> 18 \\
+
+\pagenumbering{roman}
+\setcounter{page}{2}
+\end{tabbing}
+\end{flushleft}
+
+\newpage
+\begin{center}
+\textbf{ABSTACT}
+\end{center}
+
+
+Lasso regression, a crucial machine learning method that was very significant in the modern world, especially because of its exceptional capacity to carry out feature selection and regression analysis at the same time. It was particularly useful for addressing contemporary data difficulties because of its dual nature, as datasets frequently contain a high number of variables, many of which may be redundant or useless. Using machine learning techniques, specifically Lasso Regression, the researcher in the field of material science seeks to predict a particular elemental property, namely the melting point, based on various physical and chemical properties of elements gathered from the Pymatgen and Mendeleev libraries. The presented findings show that Lasso regression uses regularization to successfully balance the models' performance and complexity. The model fits the training data well and generalizes to unknown data fairly well, indicating a decent balance between underfitting and overfitting, according to the reported training score of 0.96 and test score of 0.90. Furthermore, Lasso's feature selection capability which eliminates less significant features by decreasing their coefficients to zero is demonstrated by the fact that the model only chose 8 features. By simplifying the model and lowering the number of active features, overfitting may be lessened and the model becomes easier to understand. The findings demonstrate that Lasso regression may choose only the most pertinent data and generate an accurate and interpretable model by appropriately adjusting the alpha value. This improves efficiency while preserving good predictive performance.
+
+\newpage
+\begin{center}
+\textbf{INTRODUCTION}
+\end{center}
+
+Machine learning (ML) has emerged as a leading platform for driving innovation and advancing technology, offering significant benefits and convenience to humanity. It provides advantages across various aspects of our lives, particularly in scientific research, where it aids in producing accurate and reliable results essential for standardizing experiments may it be in actual set-up or through simulations. This transformative movement in artificial intelligence was enhancing the quality of life by accelerating discoveries and enabling machines to operate with human-like intelligence. In line to that, machine learning improves efficiency by delivering precise data and insights across diverse fields, wherein it greatly contributes to the science and technological discoveries.\\
+\indent ML became rampant in the international aspect of business and finance. Machine learning empowers business analysts to go beyond descriptive analytics in explaining past events and embrace predictive analytics in forecasting future outcomes. By leveraging historical data, machine learning models can generate accurate predictions, offering significant value for strategic planning and risk management. In the financial sector, machine learning algorithms can anticipate market trends, enabling businesses to refine investment strategies. In retail, predictive analytics can forecast customer demand, helping companies optimize inventory management and pricing strategies for greater efficiency and profitability.\\
+\indent These advancements were now evidently observed here in the Philippines as the country continued to develop and engage in a more collaborative set up with other nations abroad. By influence of those, Philippines slowly adapted and accepted these innovations and started to apply to the Philippine market as well as to the science and technology field. This trend was expected to accelerate as the country continues to invest in AI capabilities and digital infrastructure. While this growth presents exciting opportunities for innovation and industry expansion, it also highlights the need for upskilling and reskilling to address potential job displacement and adapt to the evolving work landscape.\\ 
+\indent Additionally, the Philippines' unique cultural strengths such as a strong work ethic and a focus on customer service further bolster the success of its AI industry, positioning the country as a competitive player in the global AI market.
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\newpage
+\begin{center}
+\textbf{STATEMENT OF THE PROBLEM}
+\end{center}
+
+\indent In the field of material science, the researcher aims to predict a specific elemental property which was the melting point using machine learning techniques, specifically Lasso Regression, based on various physical and chemical properties of elements obtained from the two libraries namely the Pymatgen and Mendeleev libraries. 
+
+\vspace{0.5cm}
+\begin{center}
+\textbf{SIGNIFICANCE OF THE STUDY}
+\end{center}
+
+This study has an important implication in our world nowadays especially in industries like materials engineering, manufacturing, aerospace and electronics. By leveraging Lasso Regression, the program provides a method to predict properties that would otherwise require costly, time-consuming experiments, streamlining the design and development of materials with desired characteristics.\\ 
+\indent In the realm of materials innovation, accurately predicting melting points allows researchers to choose or develop new materials that can endure specific temperatures for uses in electronics, high-performance engines, or aerospace components. This ability helps optimize material properties before conducting physical tests, thereby saving both time and resources. The adoption of machine learning in this field signifies a shift toward data driven decision making, enabling the analysis of large datasets to uncover patterns and relationships that may not be immediately visible using traditional approaches of examining.\\ 
+\indent Such predictive modelling was valuable not only in material science but also in fields like pharmaceuticals, chemical engineering, and any industry where understanding the link between an element’s properties was crucial for product development, process improvement, or innovation. Ultimately, this study demonstrates how artificial intelligence and machine learning are revolutionizing industries by offering more precise predictions, accelerating development cycles, and improving overall efficiency.\\ 
+
+\newpage
+\begin{center}
+\textbf{REVIEW OF RELATED LITERATURE}
+\end{center}
+
+In recent years, machine learning (ML) models offer significant potential to accelerate the development of new materials by providing a virtual alternative to traditional, time-consuming, and resource-heavy experimental methods. In this second part of a two-part study, an ML-based approach was presented to expedite the digital design of Mg alloys. The study systematically evaluates four ML regression algorithms to understand the complex relationships in Mg-alloy data and identify composition-processing-property patterns.\\
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{Picture1}
+\end{figure}
+
+Cross-validation and hold-out validation techniques were employed to ensure unbiased performance estimation. By utilizing atomic and thermodynamic properties of the alloys, feature augmentation was explored to determine the most effective representation of the alloy data. Furthermore, a graphical user interface (GUI) web tool was created to enable users to apply the proposed models for predicting the mechanical properties of new Mg alloys. The findings show that the random forest regression model and neural network are effective in predicting the ultimate tensile strength and ductility of Mg alloys, achieving accuracies of approximately 80\% and 70\%, respectively. The models developed in this study represent a step forward in high-throughput screening of novel materials for desired mechanical properties, offering ML-guided alloy design.\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/Picture2}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/Picture3}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/Picture4}
+\end{figure}
+
+This study evaluates machine learning algorithms for the digital design of Mg alloys, marking the first systematic assessment of its kind. The random forest model was the most stable and effective for predicting the ultimate tensile strength (UTS), yield strength (YS), and ductility of Mg alloys, while the neural network model showed promise with minimal overfitting. Hyperparameter tuning optimized model performance, achieving an 80\% accuracy in predicting UTS using thermodynamic features. However, predicting ductility was more complex and resulted in lower performance. The study introduces a web-based tool that provides a virtual alternative to traditional alloy design methods, offering potential for high-performance magnesium alloy development across various industries.\\
+
+\newpage
+\begin{center}
+\textbf{METHODOLOGY}
+\end{center}
+
+In this section, the researcher outlines the methods used to achieve the study's objectives. With the advancement of technology, coding and programming have become foundational for innovations and discoveries in fields such as robotics, mechanics, and more. For this study, the researcher employed Jupyter Notebook as the primary platform for development, utilizing Python as the programming language throughout the entire process. The method used by the researcher was anchored to the process taught by the professor which refers to the work book of Andreas C. Muller and Sara Guido entitled Introduction to Machine Learning with Python: A Guide for Data Scientists.\\
+\indent There were two library packages that was utilized in the program which are the Pymatgen and Mendeleev libraries. With these, elemental properties both physical and chemical aspects were already provided and given in the packages like queries or attributes and extract information from datasets related to materials’ structures, properties and computations. Some notebooks lack these libraries, however, there are syntaxes that enables and directly install these packages in just a couple of minutes. The elements were distinguish depending on their crystal structure which influences the mechanical and physical properties of the material. These elements were classified into four groups; Face-centered Cubic (FCC) elements, Body-centered Cubic (BCC) elements, Hexagonal Closed-packed (HCP) elements and randomly selected elements in the periodic table. Additionally, elements in these groups does have greater importance in materials science as it is the most used and common elements present in some products that we are using in today’s generation. So, this study became the avenue for exploration and discoveries of new milestone in the planet.\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Pictures/Screenshots/S1}
+	\caption{Schematic Diagram}
+\end{figure}
+\newpage
+
+Selecting of attributes were given in both libraries, Pymatgen as well as in Mendeleev. The queries used in pymatgen libraries are the following; atomic mass, atomic radius, electrical resistivity, molar volume, thermal conductivity, bulk modulus, youngs modulus, Brinell hardness, average ionic radius, melting point, rigidity modulus, density of solid, and coefficient of linear thermal expansion. As to the mendeleev libraries, the properties are the following; atomic number, atomic volume, boiling point, electron affinity, en pauling, evaporation heat, fusion heat, heat of formation, lattice constant, melting point, specific heat, density, molar heat capacity, atomic weight uncertainty, dipole polarizability. All of these properties with values are the basis of our training and tests that are essential in determining the efficiency of the predictability of the lasso regression method.\\
+\indent In the coding or programming section, the researcher will be able to manipulate the datasets wherein it doesn’t make any errors that aren’t necessary to be included in the information in the datasets as the basis. Some syntaxes were implemented to modify the values of the sample data in the program. Lasso regression method was then utilized as the objectives of the study in predicting the elemental property of the material which was the melting point. The researcher will train the chosen variable for x and y together with the test values needed for the machine learning to be executed effectively. Analyses and evaluation follow after the results were obtained.\\
+
+\newpage
+\begin{center}
+\textbf{RESULTS AND DISCUSSION}
+\end{center}
+
+This section entails the detailed results of the study in the Jupyter Notebook where Python as an algorithm used in the program.\\
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a1}
+\end{figure}
+\vspace{-10mm} 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a2}
+\end{figure}
+\vspace{-6mm}
+
+As mentioned in the previous page, installation of packages was the starting procedure in the program as defining of functions are the backbone of the coding.\\
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a3}
+\end{figure}
+\vspace{-6mm}
+
+This part of the program was about determining and selecting elements as well as to the materials physical and chemical properties that was available in the libraries of pymatgen and mendeleev.\\
+
+\newpage
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a4}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a5}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a6}
+\end{figure}
+\vspace{-6mm}
+As seen on the cells, there are 61 rows indicating the number of elements that was being used and 28 columns where it also represents the properties or attributes of the materials with values that are available in both libraries mentioned above.\\
+
+\newpage
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a7}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a8}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a9}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a10}
+\end{figure}
+\vspace{-6mm}
+
+As witnessed on the table above, it was evident that some of the elements doesn’t have a definite value having a NaN instead of a definite number. This indicates “Not a Number” and was used to exemplify undefined, unrepresentable or missing numerical values in floating point computations. Meaning to say, errors when running are inevitable. In order to avoid these such circumstances, manipulating and modifying the datasets information by providing syntax code to eliminate elements that will cause errors along the program.\\
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a11}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a12}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a13}
+\end{figure}
+\vspace{-6mm}
+
+The dataset information was modified and transformed into a pure numerical value necessary for training and testing.\\
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a14}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a15}
+\end{figure}
+\vspace{-8mm}
+
+Now, the aim of the study was to predict the elemental property which was the melting point of the materials. As observed in the code above, the y variable was represented by the melting point that was indicated in the cell with the code syntax. On the other hand, the x variable exemplifies all of the remaining attributes in the dataset information excluding the melting point property of the material.\\
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a16}
+\end{figure}
+\vspace{-6mm}
+
+The train\_test\_split function from sklearn.model\_selection was a widely used method for splitting a dataset into training and testing subsets, which was a crucial step in building and validating machine learning models. In the code above, train\_test\_split(X, y, random\_state=66) takes the feature set X and the target variable y and splits them into four distinct subsets: X\_train, X\_test, y\_train, and y\_test. The X\_train and y\_train subsets are used to train the model, allowing it to learn patterns and relationships between the features and target variable. On the other hand, X\_test and y\_test serve as unseen data to evaluate the model's performance, helping to measure how well the model generalizes to new data it hasn’t encountered during training.\\
+\indent By default, the function allocates 75\% of the dataset to the training set and the remaining 25\% to the testing set, though this ratio can be customized using the test\_size parameter. For instance, specifying test\_size=0.3 would allocate 70\% of the data to training and 30\% to testing. The random\_state=66 parameter was a seed for the random number generator, which ensures that the split remains consistent and reproducible each time the code was executed. This was important for debugging, comparison, and ensuring consistent results across different runs of the code.\\
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a17}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a18}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a19}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a20}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a21}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a22}
+\end{figure}
+\newpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a23}
+\end{figure}
+\vspace{-6mm}
+
+The training subsets, X\_train and y\_train, enable the model to learn from historical data by adjusting its internal parameters. The model used these subsets to identify patterns, correlations, or trends in the data. The testing subsets, X\_test and y\_test, are kept separate and serve as a benchmark to evaluate the model’s predictive accuracy and performance on data. This separation helps prevent the model from overfitting, where it performs well on the training data but poorly on new, unseen data. Evaluating the model on the testing set provides an estimate of how the model was likely to perform in real-world scenarios, ensuring it can generalize effectively\\
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a24}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a25}
+\end{figure}
+\vspace{-6mm}
+
+In these cells, the Lasso regression model from sklearn library was used to train and evaluate a machine learning model. The Lasso regression model was subsequently initialized and trained on the feature set, X\_train, and the target variable, y\_train, using the fit method. This regularization technique effectively shrinks some coefficients to precisely zero, thereby performing feature selection by eliminating less significant predictors. Following the training process, the model's performance was assessed by calculating the R² score on both the training and testing datasets through the score method. The training score reflects the proportion of variance in the training data explained by the model, whereas the test score evaluates the model's ability to generalize to new, unseen data.\\	
+\indent In addition to evaluating model performance, the code determines the number of features actively contributing to the predictions by examining the coefficients stored in lasso.coef\_. Specifically, the expression np.sum(lasso.coef\_ != 0) counts the number of non-zero coefficients, indicating which features were deemed relevant by the model. Lasso's capability to reduce the number of active features simplifies the model, enhances interpretability, and mitigates overfitting, particularly in datasets with high-dimensional feature spaces. The final output would report the training and test scores along with the number of features retained, offering insights into the model's accuracy and efficiency.\\
+\indent In the results presented above, the Lasso regression model results indicate strong performance and effective feature selection. The training set score of 0.96 shows that the model explains 96\% of the variance in the training data, suggesting an excellent fit to the data it was trained on. The test set score of 0.90 demonstrates that the model explains 90\% of the variance in the unseen test data, indicating good generalization and minimal overfitting, as the test score remains close to the training score. Additionally, the model uses only 8 features, as determined by the number of non-zero coefficients in the model. This outcome highlights the benefit of L1 regularization applied by Lasso, which penalizes the magnitude of the coefficients and effectively eliminates less important features by shrinking their coefficients to zero. By selecting just 8 relevant features, the model reduces complexity and improves interpretability while maintaining strong predictive performance. This balance of accuracy and simplicity was particularly valuable when working with datasets that have many features, as it helps mitigate the risk of overfitting and enhances the model's efficiency.\\
+\indent As the alpha decreases, the scores of both training and test did not change at all. Meaning to say that the model was finding multiple subsets of features that explain the data equally well. This situation often occurs when features are highly correlated, meaning different combinations of features can achieve similar predictive accuracy. The significance of alpha parameter was to controls the strength of the L1 regularization, which penalizes the magnitude of the model's coefficients. A higher alpha value imposes stronger regularization, shrinking more coefficients to exactly zero and thereby reducing the number of active features in the model. Conversely, a lower alpha value weakens the regularization effect, allowing more features to retain non-zero coefficients and making the model behave similarly to standard linear regression.\\
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a26}
+\end{figure}
+\vspace{-10mm}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{C:/Users/User/Downloads/a27}
+\end{figure}
+\vspace{-6mm}
+
+The plot generated by the code illustrated above shows how the coefficients of Lasso regression models change as the alpha parameter was varied. Lasso regression applies L1 regularization, penalizing the magnitude of the model's coefficients and forcing some of them to zero as alpha increases. In the plot, four different Lasso models with varying alpha values were shown: alpha = 1, alpha = 0.1, alpha = 0.0001, and alpha = 0.00001, with each alpha value represented by a different marker style. As alpha increases, the regularization effect becomes stronger, causing more coefficients to shrink towards zero, which results in a simpler model that uses fewer features. For example, with alpha = 1, many of the coefficients are driven to zero, indicating that only a few features are deemed important. In contrast, with alpha = 0.0001 and alpha = 0.00001, the regularization was much weaker, allowing more coefficients to remain non-zero and the model to retain more complexity, closer to ordinary linear regression. The y-axis represents the magnitude of each coefficient, while the x-axis shows the index of each feature in the model. The plot provides valuable insights into how different levels of regularization affect the feature selection process and model complexity. It highlights the trade-off between using more features (with lower alpha values) and maintaining a simpler, more interpretable model (with higher alpha values). The visualization helps in selecting the appropriate alpha value that balances model performance and generalization, minimizing both overfitting and underfitting.\\
+
+\newpage
+\begin{center}
+\textbf{CONCLUSION}
+\end{center}
+
+The results provided demonstrate that Lasso regression effectively balances the models’ complexity and the performance through the use of regularization. The reported training score of 0.96 and test score of 0.90 indicate that the model fits the training data well and generalizes reasonably well to unseen data, suggesting a good balance between underfitting and overfitting. Additionally, the fact that only 8 features were selected by the model highlights the strength of Lasso’s feature selection capability, where less important features are eliminated by shrinking their coefficients to zero. This reduction in the number of active features simplifies the model, making it more interpretable and potentially reducing overfitting.\\
+\indent The close proximity between the training and test scores suggests that the model does not suffer from significant overfitting. However, the slight drop from the training score to the test score indicates that some regularization was necessary to achieve optimal performance on new data. In conclusion, the results reflect that Lasso regression, with appropriate tuning of the alpha parameter, can produce an accurate and interpretable model by selecting only the most relevant features, improving efficiency while maintaining strong predictive performance.\\
+
+\begin{center}
+\textbf{RECOMMENDATIONS}
+\end{center}
+
+For the future researchers who opted to use Lasso regression method for research puposes like this, here are some several recommendations that will help you optimize the performance and applicability of the models. First is the data. You really need to make sure that the data were definite including the attributes, elements as well as to the processes wherein modification and alteration are needed to have an accurate result. The choice of alpha also significantly impacts the model’s performance and complexity. Analyze carefully the features’ importance where you have to investigate in order to understand their contribution to the model. Identifying which features were retained and why they are important where can offer deeper insights and guide for future improvements. Moreover, you can add detailed comments explaining each step of the code to improve readability and maintainability. This will help you understand the purposes of each line and facilitates debugging or further development.\\
+
+\newpage
+\begin{center}
+\textbf{REFERENCES}
+\end{center}
+
+\begin{thebibliography}{9}
+
+\bibitem{ghorbani2023}
+M. Ghorbani, M. Boley, P. N. H. Nakashima, N. Birbilis, 
+\textit{A machine learning approach for accelerated design of magnesium alloys. Part B: Regression and property prediction}, 
+Journal of Magnesium and Alloys, Volume 11, Issue 11, November 2023, Pages 4197–4205. 
+Available at: \url{https://www.sciencedirect.com/science/article/pii/S2213956723002165}
+
+\bibitem{muller2016}
+Andreas C. Müller, Sarah Guido,
+\textit{Introduction to Machine Learning with Python}, 
+O’Reilly Media, Inc., September 2016. ISBN: 9781449369897. 
+Available at: \url{https://www.oreilly.com/library/view/introduction-to-machine/9781449369880/}
+
+\bibitem{iiba}
+The Rise of Machine Learning: A Game Changer for Business Analysis. 
+Available at: \url{https://www.iiba.org/business-analysis-blogs/the-rise-of-machine-learning-a-game-changer-for-business-analysis/}
+
+\bibitem{statista}
+Machine Learning in the Philippines — Analyst Opinion. 
+Available at: \url{https://www.statista.com/outlook/tmo/artificial-intelligence/machine-learning/philippines#analyst-opinion}
+
+\end{thebibliography}
+
+\end{document}
